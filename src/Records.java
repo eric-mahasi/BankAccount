@@ -1,5 +1,3 @@
-import java.util.Formatter;
-import java.util.FormatterClosedException;
 import java.util.Scanner;
 
 /**
@@ -7,14 +5,12 @@ import java.util.Scanner;
  */
 //This is the class that deals with storing the user's data to a text file
 public class Records {
-    private Formatter formatter;
     private Scanner userInput;
-    private Scanner input;
     private Client client;
 
-    public Records(Scanner input){
+    public Records(Scanner input, Client client){
         userInput = input;
-        client = new Client(userInput)
+        this.client = client
         System.out.println("Welcome user.");
 
         do{
@@ -24,7 +20,7 @@ public class Records {
             try{
                 switch (userInput.nextInt()){
                     case 1:
-                        client.createAccount();
+                        this.client.createAccount();
                         break;
                     case 2:
                         getUserRecord();
@@ -38,7 +34,11 @@ public class Records {
         }while(true);
     }
 
-    //This opens the file and enables it for data entry
+    public void getUserRecord(){
+
+    }
+
+    /*//This opens the file and enables it for data entry
     public void loadFile() {
         try {
             formatter = new Formatter("accounts.txt");//opening the file
@@ -46,10 +46,10 @@ public class Records {
             System.err.println("Error while creating or opening the file");
             System.exit(1);
         }
-    }
+    }*/
 
     //Adding user data into the text file
-    public void addRecord() {
+    /*public void addRecord() {
         Client client = new Client();
         try {
             input = new Scanner(String.valueOf(Client.class));
@@ -72,11 +72,5 @@ public class Records {
                 System.err.println("Error writing to file");
             }
         }
-    }
-
-    public void closeFile() {
-        if (formatter != null) {
-            formatter.close();
-        }
-    }
+    }*/
 }
