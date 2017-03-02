@@ -7,9 +7,8 @@ import java.util.Scanner;
 
 public class Client {
     public static final double LIMIT = 10000;// the minimum amount an account can have
-    private static double balance;
-    private static double deposit;
     private static Scanner userInput;
+    private static double balance;
     private String firstName;
     private String lastName;
     private int accountNumber;
@@ -21,7 +20,7 @@ public class Client {
     //method to deposit money into account
     public static void deposit() {
         System.out.println("Please enter the amount you want to deposit");
-        deposit = userInput.nextDouble();
+        double deposit = userInput.nextDouble();
         balance += deposit;
         System.out.println("Transaction completed\nAmount deposited: Ksh " + deposit);
         checkBalance();
