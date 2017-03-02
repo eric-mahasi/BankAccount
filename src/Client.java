@@ -6,9 +6,9 @@ import java.util.Scanner;
 //This class handles all the user data
 
 public class Client {
+    public static final double LIMIT = 10000;// the minimum amount an account can have
     private static double balance;
     private static double deposit;
-    private static double withdrawal;
     private static Scanner userInput = new Scanner(System.in);
     private static Client client = new Client();
     //private static Bank ba = new Bank();
@@ -16,8 +16,8 @@ public class Client {
     private String lastName;
     private int accountNumber;
 
-    public Client() {
-        balance = 10000;//by default, the minimal amount of money in the account
+    public Client(){
+
     }
 
     //This constructor will be used to pass data into an object to store the data to a file
@@ -85,14 +85,6 @@ public class Client {
         this.deposit = deposit;
     }
 
-    public double getWithdrawal() {
-        return withdrawal;
-    }
-
-    public void setWithdrawal(double withdrawal) {
-        this.withdrawal = withdrawal;
-    }
-
     //This method handles basic user info and creates an account for them
     public void createAccount() {
         Scanner userInput = new Scanner(System.in);
@@ -116,17 +108,16 @@ public class Client {
     //method to withdraw from account
     public void withdraw() {
         System.out.println("Please enter the amount you want to withdraw");
-        withdrawal = userInput.nextDouble();
-        client.setWithdrawal(withdrawal);
-        if (withdrawal >= client.getBalance()) {
+        double withdrawal = userInput.nextDouble();
+        balance -= withdrawal;
+        if (balance < LIMIT) {
             //this prevents the user from emptying his account
             System.out.println("Sorry, withdrawal limit exceeded");
-            System.exit(0);
+            balance += withdrawal;
         } else {
-            balance -= withdrawal;
             client.setBalance(balance);
+            System.out.println("Transaction completed\nAmount withdrawn: Ksh " + withdrawal);
         }
-        System.out.println("Transaction completed\nAmount withdrawn: Ksh " + client.getWithdrawal());
         checkBalance();
     }
 }
