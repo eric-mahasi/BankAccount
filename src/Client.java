@@ -14,8 +14,8 @@ public class Client {
     private String lastName;
     private int accountNumber;
 
-    public Client(){
-        userInput = new Scanner(System.in);
+    public Client(Scanner input){
+        userInput = input;
     }
 
     //method to deposit money into account

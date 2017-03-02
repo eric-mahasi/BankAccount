@@ -10,9 +10,9 @@ import java.util.Scanner;
 //It displays the welcome message to the user and handles all the objects from the other classes
 
 public class Bank {
-    private static Client client = new Client();
-    private static Records record = new Records();
     private static Scanner userInput = new Scanner(System.in);
+    private static Client client = new Client(userInput);
+    //private static Records record = new Records();
 
     // This method offers the user with some choices
     // It also keeps displaying those choices until the user enters a valid one
@@ -47,9 +47,9 @@ public class Bank {
 
     public static void main(String[] args) {
         client.createAccount();
-        record.loadFile();
-        record.addRecord();
-        record.closeFile();
+        //record.loadFile();
+        //record.addRecord();
+        //record.closeFile();
         displayWelcomeMessage();
         userInput.close();
     }
