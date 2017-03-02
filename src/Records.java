@@ -1,52 +1,57 @@
-import java.io.File;
 import java.util.Formatter;
+import java.util.FormatterClosedException;
 import java.util.Scanner;
 
 /**
  * Created by eric on 21/10/16.
  */
-public class Records extends Accounts {
-    public Records() {
-
-    }
-
+//This is the class that deals with storing the user's(s') data to a text file
+public class Records extends Client {
+    private static Client cl = new Client();
     private Formatter formatter;
-    private Scanner fileReader;
-
-    public void createFile() {
-        try {
-            formatter = new Formatter("accounts.txt");
-        } catch (Exception e) {
-            System.out.println("Sorry, file not found");
-        }
+    private Scanner input;
+    public Records() {
     }
 
+    //This opens the file and enables it for data entry
     public void loadFile() {
         try {
-            fileReader = new Scanner(new File("ourFile.txt"));
+            formatter = new Formatter("accounts.txt");//opening the file
         } catch (Exception e) {
-            System.out.println("The file couldn't be found");
+            System.err.println("Error while creating or opening the file");
+            System.exit(1);
         }
     }
 
-    public void readFile() {
-        while (fileReader.hasNext()) {
-            String a = fileReader.next();
-            String b = fileReader.next();
-            String c = fileReader.next();
-        }
-        System.out.format("%s %s re.addRecord();%s \n", " a, b ,c");
-    }
-
+    //Adding user data into the text file
     public void addRecord() {
-        Accounts ca = new Accounts();
-        ca.createAccount();
-        formatter.format("%s %s %s \n", ca.getFirstName(), ca.getLastName(), ca.getAccountNumber());
+        Client cl = new Client();
+        try {
+            input = new Scanner(String.valueOf(Client.class));
+        } catch (Exception e) {
+            System.err.println("The file couldn't be found");
+        }
+        while (input.hasNext()) {
+            try {
+                cl.getAccountNumber();
+                // cl.setFirstName(input.next());
+                //cl.setLastName(input.next());
+                // cl.setBalance(input.nextDouble());
+                if (true) {
+                    //writing a new record
+                    formatter.format("%s %s %d %.2f \n", cl.getFirstName(), cl.getLastName(), cl.getAccountNumber(), cl.getBalance());
+                } else {
+                    //some message related to the condition
+                }
+            } catch (FormatterClosedException formatterClosedException) {
+                System.err.println("Error writing to file");
+            }
+        }
     }
 
     public void closeFile() {
-        formatter.close();
-        //fileReader.close();
+        if (formatter != null) {
+            formatter.close();
+        }
     }
-
 }
