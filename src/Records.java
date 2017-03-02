@@ -10,8 +10,6 @@ public class Records extends Client {
     private static Client client = new Client();
     private Formatter formatter;
     private Scanner input;
-    public Records() {
-    }
 
     //This opens the file and enables it for data entry
     public void loadFile() {
