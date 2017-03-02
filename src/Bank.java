@@ -37,6 +37,7 @@ public class Bank {
                 client.checkBalance();
                 break;
             case 4:
+                userInput.close();
                 System.exit(0);
             default:
                 System.err.println("Invalid choice bana");
@@ -51,6 +52,5 @@ public class Bank {
         //record.addRecord();
         //record.closeFile();
         displayWelcomeMessage();
-        userInput.close();
     }
 }
