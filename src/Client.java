@@ -48,6 +48,8 @@ public class Client {
 
         System.out.println("Thank you. Your account number is : " + accountNumber);
 
+        System.out.println("Please make your initial deposit:");
+        deposit();
     }
 
     //method to withdraw from account
