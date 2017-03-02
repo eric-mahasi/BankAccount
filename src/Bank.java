@@ -10,8 +10,8 @@ import java.util.Scanner;
 //It displays the welcome message to the user and handles all the objects from the other classes
 
 public class Bank {
-    private static Client cl = new Client();
-    private static Records re = new Records();
+    private static Client client = new Client();
+    private static Records record = new Records();
     private static Scanner userInput = new Scanner(System.in);
 
     // This method offers the user with some choices
@@ -28,13 +28,13 @@ public class Bank {
         choice = userInput.nextInt();
         switch (choice) {
             case 1:
-                cl.withdraw();
+                client.withdraw();
                 break;
             case 2:
-                cl.deposit();
+                client.deposit();
                 break;
             case 3:
-                cl.checkBalance();
+                client.checkBalance();
                 break;
             case 4:
                 System.exit(0);
@@ -46,10 +46,10 @@ public class Bank {
     }
 
     public static void main(String[] args) {
-        cl.createAccount();
-        re.loadFile();
-        re.addRecord();
-        re.closeFile();
+        client.createAccount();
+        record.loadFile();
+        record.addRecord();
+        record.closeFile();
         displayWelcomeMessage();
         userInput.close();
     }

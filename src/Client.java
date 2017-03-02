@@ -10,7 +10,7 @@ public class Client {
     private static double deposit;
     private static double withdrawal;
     private static Scanner userInput = new Scanner(System.in);
-    private static Client cl = new Client();
+    private static Client client = new Client();
     //private static Bank ba = new Bank();
     private String firstName;
     private String lastName;
@@ -32,16 +32,16 @@ public class Client {
     public static void deposit() {
         System.out.println("Please enter the amount you want to deposit");
         deposit = userInput.nextDouble();
-        cl.setDeposit(deposit);
+        client.setDeposit(deposit);
         balance += deposit;
-        cl.setBalance(balance);
-        System.out.println("Transaction completed\nAmount deposited: Ksh " + cl.getDeposit());
+        client.setBalance(balance);
+        System.out.println("Transaction completed\nAmount deposited: Ksh " + client.getDeposit());
         checkBalance();
     }
 
     //pretty self explanatory method
     public static void checkBalance() {
-        System.out.println("Your account balance is: Ksh " + cl.getBalance() + "\n");
+        System.out.println("Your account balance is: Ksh " + client.getBalance() + "\n");
     }
 
     //getter and setter methods
@@ -100,16 +100,16 @@ public class Client {
         System.out.println("Provide a few details to enable account creation priss");
         System.out.println("First name:");
         firstName = userInput.next();
-        cl.setFirstName(firstName);
+        client.setFirstName(firstName);
 
         System.out.println("Last name:");
         lastName = userInput.next();
-        cl.setLastName(lastName);
+        client.setLastName(lastName);
 
         accountNumber = (int) (Math.random() * 1000 + 1);//a random 3-digit number is chosen as the account number
-        cl.setAccountNumber(accountNumber);
+        client.setAccountNumber(accountNumber);
 
-        System.out.println("Thank you. Your account number is : " + cl.getAccountNumber());
+        System.out.println("Thank you. Your account number is : " + client.getAccountNumber());
 
     }
 
@@ -117,16 +117,16 @@ public class Client {
     public void withdraw() {
         System.out.println("Please enter the amount you want to withdraw");
         withdrawal = userInput.nextDouble();
-        cl.setWithdrawal(withdrawal);
-        if (withdrawal >= cl.getBalance()) {
+        client.setWithdrawal(withdrawal);
+        if (withdrawal >= client.getBalance()) {
             //this prevents the user from emptying his account
             System.out.println("Sorry, withdrawal limit exceeded");
             System.exit(0);
         } else {
             balance -= withdrawal;
-            cl.setBalance(balance);
+            client.setBalance(balance);
         }
-        System.out.println("Transaction completed\nAmount withdrawn: Ksh " + cl.getWithdrawal());
+        System.out.println("Transaction completed\nAmount withdrawn: Ksh " + client.getWithdrawal());
         checkBalance();
     }
 }

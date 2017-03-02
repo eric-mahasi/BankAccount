@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 //This is the class that deals with storing the user's(s') data to a text file
 public class Records extends Client {
-    private static Client cl = new Client();
+    private static Client client = new Client();
     private Formatter formatter;
     private Scanner input;
     public Records() {
@@ -25,7 +25,7 @@ public class Records extends Client {
 
     //Adding user data into the text file
     public void addRecord() {
-        Client cl = new Client();
+        Client client = new Client();
         try {
             input = new Scanner(String.valueOf(Client.class));
         } catch (Exception e) {
@@ -33,13 +33,13 @@ public class Records extends Client {
         }
         while (input.hasNext()) {
             try {
-                cl.getAccountNumber();
-                // cl.setFirstName(input.next());
-                //cl.setLastName(input.next());
-                // cl.setBalance(input.nextDouble());
+                client.getAccountNumber();
+                // client.setFirstName(input.next());
+                //client.setLastName(input.next());
+                // client.setBalance(input.nextDouble());
                 if (true) {
                     //writing a new record
-                    formatter.format("%s %s %d %.2f \n", cl.getFirstName(), cl.getLastName(), cl.getAccountNumber(), cl.getBalance());
+                    formatter.format("%s %s %d %.2f \n", client.getFirstName(), client.getLastName(), client.getAccountNumber(), client.getBalance());
                 } else {
                     //some message related to the condition
                 }
