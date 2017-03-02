@@ -35,7 +35,6 @@ public class Client {
 
     //This method handles basic user info and creates an account for them
     public void createAccount() {
-        Scanner userInput = new Scanner(System.in);
         System.out.println("Welcome user.");
         System.out.println("Provide a few details to enable account creation priss");
         System.out.println("First name:");
