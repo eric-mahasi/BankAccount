@@ -10,8 +10,8 @@ import java.util.Scanner;
 //It displays the welcome message to the user and handles all the objects from the other classes
 
 public class Bank {
-    private static Scanner userInput = new Scanner(System.in);
-    private static Client client = new Client(userInput);
+    private static Scanner userInput;
+    private static Client client;
     //private static Records record = new Records();
 
     // This method offers the user with some choices
@@ -47,6 +47,9 @@ public class Bank {
     }
 
     public static void main(String[] args) {
+        userInput = new Scanner(System.in);
+        client = new Client(userInput);
+
         client.createAccount();
         //record.loadFile();
         //record.addRecord();
