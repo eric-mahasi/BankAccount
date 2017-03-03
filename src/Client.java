@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Client {
     public static final double LIMIT = 10000;// the minimum amount an account can have
-    private static Scanner userInput;
-    private static double balance;
+    private Scanner userInput;
+    private double balance;
     private String firstName;
     private String lastName;
     private int accountNumber;
@@ -17,8 +17,41 @@ public class Client {
         userInput = input;
     }
 
+    //getters and setters
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     //method to deposit money into account
-    public static void deposit() {
+    public void deposit() {
         System.out.println("Please enter the amount you want to deposit");
         double deposit = userInput.nextDouble();
         balance += deposit;
@@ -27,7 +60,7 @@ public class Client {
     }
 
     //pretty self explanatory method
-    public static void checkBalance() {
+    public void checkBalance() {
         System.out.println("Your account balance is: Ksh " + balance + "\n");
     }
 
@@ -35,7 +68,7 @@ public class Client {
     //This method handles basic user info and creates an account for them
     public void createAccount() {
         System.out.println("Welcome user.");
-        System.out.println("Provide a few details to enable account creation priss");
+        System.out.println("Provide a few details to enable account creation");
         System.out.println("First name:");
         firstName = userInput.next();
 
