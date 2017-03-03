@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Bank {
     private static Scanner userInput;
     private static Client client;
-    //private static Records record = new Records();
+    private static Records record;
 
     // This method offers the user with some choices
     // It also keeps displaying those choices until the user enters a valid one
@@ -49,11 +49,7 @@ public class Bank {
     public static void main(String[] args) {
         userInput = new Scanner(System.in);
         client = new Client(userInput);
-
-        client.createAccount();
-        //record.loadFile();
-        //record.addRecord();
-        //record.closeFile();
+        record = new Records(userInput, client);
         displayWelcomeMessage();
     }
 }
