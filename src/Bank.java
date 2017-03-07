@@ -10,9 +10,9 @@ import java.util.Scanner;
 //It displays the welcome message to the user and handles all the objects from the other classes
 
 public class Bank {
-    private static Client cl = new Client();
-    private static Records re = new Records();
-    private static Scanner userInput = new Scanner(System.in);
+    private static Scanner userInput;
+    private static Client client;
+    private static Records record;
 
     // This method offers the user with some choices
     // It also keeps displaying those choices until the user enters a valid one
@@ -28,15 +28,16 @@ public class Bank {
         choice = userInput.nextInt();
         switch (choice) {
             case 1:
-                cl.withdraw();
+                client.withdraw();
                 break;
             case 2:
-                cl.deposit();
+                client.deposit();
                 break;
             case 3:
-                cl.checkBalance();
+                client.checkBalance();
                 break;
             case 4:
+                userInput.close();
                 System.exit(0);
             default:
                 System.err.println("Invalid choice bana");
@@ -46,11 +47,9 @@ public class Bank {
     }
 
     public static void main(String[] args) {
-        cl.createAccount();
-        re.loadFile();
-        re.addRecord();
-        re.closeFile();
+        userInput = new Scanner(System.in);
+        client = new Client(userInput);
+        record = new Records(userInput, client);
         displayWelcomeMessage();
-        userInput.close();
     }
 }
